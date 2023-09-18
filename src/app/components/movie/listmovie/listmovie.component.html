@@ -1,0 +1,18 @@
+<p-table [value]="listMovie" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Titre</th>
+          <th>Année de sortie</th>
+          <th>Genre</th>
+
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-movie>
+      <tr>
+          <td>{{movie.title}}</td>
+          <td>{{movie.releaseYear}}</td>
+          <td>{{movie.genre}}</td>
+
+      </tr>
+  </ng-template>
+</p-table>

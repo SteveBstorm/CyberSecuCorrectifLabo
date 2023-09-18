@@ -1,0 +1,36 @@
+<p-fieldset legend="Enregistrement">
+  <div *ngIf="!registerOk; else Ok">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="nickname" formControlName="nickname" />
+        <label htmlFor="nickname">Votre pseudo</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="email" formControlName="email" />
+        <label htmlFor="email">Adresse e-mail</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="password" formControlName="password" type="password"/>
+        <label htmlFor="password">Mot de passe</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="confirmpwd" formControlName="confirmpwd" type="password"/>
+        <label htmlFor="confirmpwd">Confirmer mot de passe</label>
+      </span>
+    </div>
+    <p-button styleClass="p-button-rounded p-button-success" type="submit">Valider</p-button>
+  </form>
+</div>
+<ng-template #Ok>
+  <h2>Enregistrement effectué avec succès</h2>
+</ng-template>
+
+
+</p-fieldset>

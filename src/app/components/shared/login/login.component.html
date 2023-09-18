@@ -1,0 +1,12 @@
+<div *ngIf="!isConnected; else connected">
+  <div>
+    <input pInputText type="text" class="p-inputtext-sm" placeholder="Email" [(ngModel)]="email" />
+    <input pInputText type="password" class="p-inputtext-sm" placeholder="Mot de passe" [(ngModel)]="pwd" />
+  </div>
+    <p-button (click)="login()" styleClass="p-button-sm">Connexion</p-button>
+    <p-button routerLink="register" styleClass="p-button-secondary p-button-text">S'enregistrer</p-button>
+
+</div>
+<ng-template #connected>
+  <p-button (click)="logout()" styleClass="p-button-secondary p-button-text">Déconnexion</p-button>
+</ng-template>
