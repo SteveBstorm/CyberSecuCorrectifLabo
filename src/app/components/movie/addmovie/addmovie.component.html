@@ -1,1 +1,93 @@
-<p>addmovie works!</p>
+<p-fieldset *ngIf="fg" legend="Ajouter un film">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="title" formControlName="title" type="text"/>
+        <label htmlFor="title">Titre</label>
+      </span>
+    </div>
+    <br />
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="releaseYear" formControlName="releaseYear" type="number"/>
+        <label htmlFor="releaseYear">Année de sortie</label>
+      </span>
+    </div>
+    <br />
+
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="synopsis" formControlName="synopsis" type="text"/>
+        <label htmlFor="synopsis">Synopsis</label>
+      </span>
+
+    </div>
+    <br />
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="urlPoster" formControlName="urlPoster" type="url"/>
+        <label htmlFor="urlPoster">Url de l'affiche</label>
+      </span>
+    </div>
+    <br />
+    <div>
+      <span class="p-float-label">
+        <input pInputText id="urlTrailer" formControlName="urlTrailer" type="url"/>
+        <label htmlFor="urlTrailer">URL du Trailer</label>
+      </span>
+    </div>
+
+    <br />
+    <div>
+      Genre : <select pInputText formControlName="idGenre">
+        <option selected disabled>Choisissez</option>
+        <option *ngFor="let g of listGenre" [value]="g.id">
+          {{g.label}}
+        </option>
+      </select>
+    </div>
+
+    <br />
+    <div>
+      Réalisateur : <select pInputText formControlName="idRealisator">
+        <option selected disabled>Choisissez</option>
+        <option *ngFor="let g of listPerson" [value]="g.id">
+          {{g.firstname}} {{g.lastname}}
+        </option>
+      </select>
+    </div>
+
+    <br />
+    <div>
+      Scénariste : <select pInputText formControlName="idScenarist">
+        <option selected disabled>Choisissez</option>
+        <option *ngFor="let g of listPerson" [value]="g.id">
+          {{g.firstname}} {{g.lastname}}
+        </option>
+      </select>
+    </div>
+    <hr />
+    <fieldset>
+      <legend>Casting <button type="button" (click)="addCastingRow()">+</button></legend>
+      <div formArrayName="casting" *ngIf="getCastingArray().length > 0">
+        <div *ngFor="let c of getCastingArray().controls; let i = index;" [formGroupName]="i">
+          <div>
+            Acteur {{i+1}} : <select pInputText formControlName="idPerson">
+
+              <option *ngFor="let g of listPerson" [value]="g.id">
+                {{g.firstname}} {{g.lastname}}
+              </option>
+            </select>
+
+            &nbsp;
+            <span class="p-float-label">
+              <input pInputText id="role" formControlName="role" type="text"/>
+              <label htmlFor="role">Rôle</label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <p-button type="submit" styleClass="p-button-success">Valider</p-button>
+  </form>
+</p-fieldset>

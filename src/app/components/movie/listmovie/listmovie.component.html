@@ -9,7 +9,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-movie>
       <tr>
-          <td>{{movie.title}}</td>
+          <td><a [routerLink]="['../moviedetail', movie.id]">{{movie.title}}</a></td>
           <td>{{movie.releaseYear}}</td>
           <td>{{movie.genre}}</td>
 

@@ -17,4 +17,12 @@ export class MovieService {
   getAll() : Observable<Movie[]> {
     return this.client.get<Movie[]>(this.url+ "movie")
   }
+
+  getById(id : number) : Observable<Movie> {
+    return this.client.get<Movie>(this.url + "movie/" +id)
+  }
+
+  addMovie(newMovie : Movie) : Observable<any> {
+    return this.client.post(this.url+"movie", newMovie)
+  }
 }

@@ -18,7 +18,8 @@ export class NavComponent {
           items: [
               {
                   label: 'Nouveau',
-                  icon: 'pi pi-fw pi-plus'}
+                  icon: 'pi pi-fw pi-plus',
+                  url : 'movieadd'}
                   ,
                   {label : 'Liste',
                   icon : 'pi pi-fw pi-list',

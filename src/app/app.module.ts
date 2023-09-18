@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CSP_NONCE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { ListmovieComponent } from './components/movie/listmovie/listmovie.compo
 import { DetailmovieComponent } from './components/movie/detailmovie/detailmovie.component';
 import { AddmovieComponent } from './components/movie/addmovie/addmovie.component';
 import { TableModule } from 'primeng/table';
+
+import { CardModule } from 'primeng/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,11 +53,16 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     FieldsetModule,
     MenubarModule,
-    TableModule
+    TableModule,
+    CardModule
   ],
   providers: [
     provideAnimations(),
     provideToastr(),
+    // {
+    //   provide: CSP_NONCE,
+    //   useValue: globalThis.self.VideoDecoder
+    // }
   ],
   bootstrap: [AppComponent]
 })

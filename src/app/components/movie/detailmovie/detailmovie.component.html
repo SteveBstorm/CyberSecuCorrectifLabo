@@ -1,1 +1,37 @@
-<p>detailmovie works!</p>
+<p-fieldset *ngIf="currentMovie" [legend]="currentMovie.title">
+  <div class="moviedetail">
+    <div class="detail">
+      Année de sortie : <label>{{currentMovie.releaseYear}}</label><br />
+      Realisateur : <label>{{currentMovie.realisator?.firstname}} {{currentMovie.realisator?.lastname}}</label><br />
+      Scénariste : <label>{{currentMovie.scenarist?.firstname}} {{currentMovie.scenarist?.lastname}}</label><br />
+      Résumé : <label>{{currentMovie.synopsis}}</label><br />
+      <iframe width="560" height="315" [src]="currentMovie.urlTrailer" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="poster">
+      <img [src]="currentMovie.urlPoster" height="350px">
+    </div>
+  </div>
+
+
+  <p-card *ngIf="currentMovie.detailCasting" header="Casting">
+    <p-table [value]="currentMovie.detailCasting" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '40rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Role</th>
+
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-actor>
+          <tr>
+              <td>{{actor.acteur.firstname}}</td>
+              <td>{{actor.acteur.lastname}}</td>
+              <td>{{actor.role}}</td>
+
+          </tr>
+      </ng-template>
+    </p-table>
+
+  </p-card>
+</p-fieldset>
